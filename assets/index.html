@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <script src="/assets/js/index.js"></script>
+  </head>
+  <body>
+    <div id="calculator-container">
+      <h1>Calculator</h1>
+      <input id="screen" type="text" value="" /> <br />
+      <br />
+      <div class="btn">
+        <button class="black" onclick="inputtext(event)">(</button>
+        <button class="black" onclick="inputtext(event)">)</button>
+        <button class="black" onclick="inputtext(event)">1</button>
+        <button class="black" onclick="inputtext(event)">2</button>
+        <button class="black" onclick="inputtext(event)">3</button>
+
+        <button class="black" onclick="inputtext(event)">4</button>
+        <button class="black" onclick="inputtext(event)">5</button>
+        <button class="black" onclick="inputtext(event)">6</button>
+
+        <button class="black" onclick="inputtext(event)">7</button>
+        <button class="black" onclick="inputtext(event)">8</button>
+        <button class="black" onclick="inputtext(event)">9</button>
+
+        <button class="black" onclick="inputtext(event)">0</button>
+        <button class="light-blue" onclick="inputtext(event)">*</button>
+        <button class="green" onclick="inputtext(event)">/</button>
+        <button class="black" onclick="clearVal()">C</button>
+        <button class="red" onclick="cal()">=</button>
+        <button class="orange" onclick="inputtext(event)">+</button>
+        <button class="pink" onclick="inputtext(event)">-</button>
+      </div>
+    </div>
+    <script>
+
+      let screen = document.getElementById("screen");
+      let firstVal = "";
+      function inputtext(event) {
+        let Final_Value = "";
+        let inputValue = event.target.innerText;
+        screen.value += inputValue;
+
+        firstVal = inputValue;
+      }
+      function cal() {
+
+      if (screen.value.includes("*")) {
+          const multiple = screen.value.split("*");
+          const demo = Number(multiple[0]) * Number(multiple[1]);
+          screen.value = demo;
+        } else if (screen.value.includes("+")) {
+          const extract = screen.value.split("+");
+          const demo = Number(extract[0]) + Number(extract[1]);
+          screen.value = demo;
+        } else if (screen.value.includes("-")) {
+          const minus = screen.value.split("-");
+          const demo = Number(minus[0]) - Number(minus[1]);
+          screen.value = demo;
+        } else if (screen.value.includes("/")) {
+          const divide = screen.value.split("/");
+          const demo = Number(divide[0]) / Number(divide[1]);
+          screen.value = demo;
+        }
+      
+      }
+
+      function clearVal() {
+        screen.value = "";
+      }
+    </script>
+  </body>
+</html>
